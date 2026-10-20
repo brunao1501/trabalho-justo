@@ -319,7 +319,7 @@ function App() {
       </main>
       <footer>
         <span>Trabalho Justo · Construído para valorizar quem faz.</span>
-        <a href="https://www.instagram.com/bgtechconsulting/" target="_blank" rel="noopener noreferrer" aria-label="BGTech Consulting no Instagram">@bgtechconsulting</a>
+        <a href="https://www.instagram.com/bgtech.consulting/" target="_blank" rel="noopener noreferrer" aria-label="BGTech Consulting no Instagram">@bgtech.consulting</a>
       </footer>
     </>
   );
