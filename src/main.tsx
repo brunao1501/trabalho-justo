@@ -320,13 +320,6 @@ function App() {
       </main>
       <footer>
         <span>Trabalho Justo · Construído para valorizar quem faz.</span>
-        <a
-          href="https://github.com/brunao1501/trabalho-justo"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Explore o projeto no GitHub ↗
-        </a>
       </footer>
     </>
   );
