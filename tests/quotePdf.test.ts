@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import {generateQuotePdf,quoteLines,quoteTotals,wrapLine,type Quote} from "../src/quotePdf.ts";
+import {generateQuotePdf,quoteLines,quoteTotals,wrapLine,wrapText,textWidth,type Quote} from "../src/quotePdf.ts";
 const q:Quote={number:"TJ-001",date:"20/10/2026",professional:"João",contact:"joao@example.com",client:"Márcia",service:"Pintura",scope:"Preparação e pintura",deadline:"Um dia",payment:"Pix",validity:"7 dias",notes:"",detailed:true,price:250,discount:10,materials:30,transport:20,other:0};
 test("detalhamento soma ao subtotal e desconto incide uma única vez",()=>{
  const t=quoteTotals(q);assert.equal(t.labor,20000);assert.equal(t.labor+t.materials+t.transport+t.other,t.subtotal);assert.equal(t.total,22500);
@@ -29,4 +29,21 @@ test("PDF tem offsets corretos, múltiplas páginas e acentos codificados",()=>{
 });
 test("apenas campos comerciais entram no documento",()=>{
  const lines=quoteLines(q).join("\n");assert.ok(!lines.includes("reserva"));assert.ok(!lines.includes("meta mensal"));assert.ok(lines.includes("R$"));
+});
+
+test("layout usa Helvetica e abandona fonte monoespaçada",()=>{
+ const pdf=new TextDecoder().decode(generateQuotePdf(q));
+ assert.ok(pdf.includes("/BaseFont /Helvetica "));
+ assert.ok(!pdf.includes("/BaseFont /Courier"));
+ assert.ok(pdf.includes("0.082 0.247 0.208 rg"));
+});
+test("quebra visual respeita colunas inclusive palavras largas",()=>{
+ for(const input of ["W".repeat(300),"ação e preparação ".repeat(100),"Pagamento\nPix"]){
+   const lines=wrapText(input,143,9);
+   assert.ok(lines.every(line=>textWidth(line,9)<=143));
+ }
+});
+test("conteúdo não pode inserir operadores PDF",()=>{
+ const pdf=new TextDecoder().decode(generateQuotePdf({...q,client:"Ana ) Tj ET /Injected"}));
+ assert.ok(!pdf.includes("/Injected"));
 });
