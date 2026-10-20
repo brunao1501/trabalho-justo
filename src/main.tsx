@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { calculate, example, type Inputs } from "./calculator";
 import "./styles.css";
 import { InstallApp } from "./InstallApp";
+import { QuoteForm } from "./QuoteForm";
 const money = (n: number) =>
   n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 const initial = () =>
@@ -105,7 +106,7 @@ function App() {
         <a className="brand" href="#inicio">
           <b className="mark">=</b> trabalho<span>justo</span>
         </a>
-        <span className="version">PROJETO ABERTO · V0.2</span>
+        <span className="version">PROJETO ABERTO · V0.3</span>
       </header>
       <main id="inicio">
         <section className="hero">
@@ -308,6 +309,7 @@ function App() {
             </details>
           </aside>
         </div>
+        <QuoteForm valid={Boolean(result)} price={Number(values.offeredPrice)} discount={Number(values.discount)} materials={Number(values.materials)} transport={Number(values.transport)} other={Number(values.otherCosts)} />
         <section className="closing">
           <h2>Mais clareza para decidir.</h2>
           <p>

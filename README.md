@@ -2,8 +2,9 @@
 
 Simulador de preços para autônomos, desenvolvido como projeto de portfólio de Bruno. A proposta é tornar visíveis os custos e o tempo comprometido para apoiar decisões de orçamento.
 
-## Versão 0.2
+## Versão 0.3
 
+- Orçamento em PDF gerado no dispositivo, com prévia comercial e opção de preço único ou detalhado.
 - Explicações em linguagem direta, dicas por campo e exemplo guiado de pintura.
 - Aplicativo web instalável (PWA), com ícones e funcionamento offline após preparação inicial.
 - Aviso de atualização que preserva a escolha do usuário antes de recarregar.
@@ -58,7 +59,7 @@ React + TypeScript + Vite. Sem API ou banco nesta primeira etapa.
 1. Validar as premissas com três autônomos de uma atividade.
 2. Comparar custos e tempos previstos com valores reais.
 3. Adicionar API Node.js e PostgreSQL quando necessário.
-4. Exportar propostas e preparar publicação com custos documentados.
+4. Validar PDFs com profissionais e clientes.
 
 ## Missão de aprendizado
 
@@ -86,3 +87,9 @@ Offline é o armazenamento dos arquivos da aplicação, não das simulações. O
 ## Atualizar uma cópia baixada como ZIP no Windows
 
 Pare o servidor com Ctrl+C, baixe o novo ZIP no GitHub e extraia em uma nova pasta. Abra o terminal nessa pasta, execute `npm install` e depois `npm run dev`. Assim você evita misturar arquivos antigos com novos.
+
+## Orçamentos em PDF
+Preencha a etapa 4 e clique em **Gerar orçamento em PDF**. O preço vem da etapa 3 (valor pretendido, não referência). O desconto incide uma única vez. No modo detalhado, mão de obra = preço antes do desconto menos materiais, transporte e outros gastos. Não é permitido detalhar mão de obra negativa. O documento tem número editável, emissão, cliente, contato, escopo, prazo, pagamento e validade.
+A meta mensal, despesas fixas e reserva nunca entram no objeto exportado. Não há persistência dos dados nem envio a servidor. O PDF pode ser baixado ou aberto na prévia do navegador; no iPhone use Compartilhar para salvar/enviar. A geração funciona offline após o cache da aplicação.
+O documento A4 tem paginação automática. O gerador usa fontes padrão Windows-1252, com suporte a português; emojis e caracteres fora desse conjunto são substituídos por ?. Valores comerciais são arredondados em centavos antes de somar e descontar. O PDF não é nota fiscal.
+Testes incluem soma dos itens, desconto, arredondamento, validação, paginação e offsets do arquivo PDF. A conferência visual em navegador e leitor de PDF deve fazer parte da validação em dispositivo real.

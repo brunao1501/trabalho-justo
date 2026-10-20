@@ -459,3 +459,21 @@ small {
     padding: 22px;
   }
 }
+
+.quote-section{margin:32px 32px 0;padding:28px;background:white;border:1px solid #dce4d5;border-radius:20px}
+.quote-help{font-size:13px;line-height:1.7;color:#53684f}
+.quote-wide{grid-column:1/-1}
+.quote-input,textarea{width:100%;border:1px solid #cbd7c4;border-radius:9px;padding:13px;font:inherit;background:#fcfdfa;color:#203b34}
+textarea{resize:vertical;min-height:90px;line-height:1.6}
+.quote-input:focus,textarea:focus{outline:3px solid #b6cf91;outline-offset:1px}
+.quote-options{margin:24px 0 12px;padding:18px;border:1px solid #dce4d5;border-radius:12px}
+.quote-options legend{font-size:14px;font-weight:700;padding:0 7px}
+.quote-options label{display:flex;align-items:flex-start;gap:10px;font-weight:400;line-height:1.6}
+.quote-options input{width:18px;height:18px;flex-shrink:0;accent-color:#153f35;margin-top:2px}
+.quote-preview{padding:20px;background:#eef3e5;border-radius:12px;margin-top:18px;max-width:560px}
+.quote-preview dt{color:#304b38}
+.quote-error{color:#823918;font-size:14px;line-height:1.6}
+.quote-download{background:#153f35;color:white;font-size:14px;font-weight:700;padding:14px 22px}
+.quote-download:hover{background:#225b4b}
+.quote-download:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:700px){.quote-section{margin:24px 16px 0;padding:22px}}
