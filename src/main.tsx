@@ -106,7 +106,6 @@ function App() {
         <a className="brand" href="#inicio">
           <b className="mark">=</b> trabalho<span>justo</span>
         </a>
-        <span className="version">PROJETO ABERTO · V0.3</span>
       </header>
       <main id="inicio">
         <section className="hero">
@@ -320,6 +319,7 @@ function App() {
       </main>
       <footer>
         <span>Trabalho Justo · Construído para valorizar quem faz.</span>
+        <a href="https://www.instagram.com/bgtechconsulting/" target="_blank" rel="noopener noreferrer" aria-label="BGTech Consulting no Instagram">@bgtechconsulting</a>
       </footer>
     </>
   );
